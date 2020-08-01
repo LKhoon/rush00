@@ -6,7 +6,7 @@
 /*   By: kilee <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 15:38:37 by kilee             #+#    #+#             */
-/*   Updated: 2020/08/01 17:44:18 by kilee            ###   ########.fr       */
+/*   Updated: 2020/08/01 19:15:22 by kilee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,20 @@
 
 void		ft_putchar(char c);
 
-void		make_base(int y, int *c_y, char *sbl)
+void		make_base(int x, int *c_x, char *sbl)
 {
-	while (*c_y < y)
-	{
-		if (*c_y == 0)
-			ft_putchar(sbl[0]);
-		else if (*c_y > 0 && *c_y < y-1)
-			ft_putchar(sbl[1]);
-		else if (*c_y == y-1)
+	while (*c_x < x)
+	{	if (*c_x == x-1)
 		{
 			ft_putchar(sbl[2]);
 			ft_putchar('\n');
 		}	
-		++*c_y;
+		else if (*c_x == 0)
+			ft_putchar(sbl[0]);
+		else if (*c_x > 0 && *c_x < x-1)
+			ft_putchar(sbl[1]);
+		++*c_x;
 	}
-}
-
-void		stack_base(int x, int y)
-{
-
 }
 	
 void 		rush(int x, int y)
@@ -43,19 +37,19 @@ void 		rush(int x, int y)
 
 	c_x = 0;
 	c_y = 0;
-	while (c_x < x)
+	while (c_y < y)
 	{
-		if (c_x == 0 | c_x == x-1)
+		if (c_y == 0 | c_y == y-1)
 		{
-			make_base(y, &c_y, "o-o");
-			c_y = 0;
-			c_x++;
+			make_base(x, &c_x, "o-o");
+			c_x = 0;
+			c_y++;
 		}
 		else
 		{
-			make_base(y, &c_y, "| |");
-			c_y = 0;
-			c_x++;
+			make_base(x, &c_x, "| |");
+			c_x = 0;
+			c_y++;
 		}
 	}
 }
